@@ -13,5 +13,5 @@ architecture Behavioral of scheme_3 is
 begin
     wire_0 <= not (x2 and x3 and x4);
     wire_1 <= not (x10 and x11);
-    y0 <= ((x0 and x1) or (wire_0 and x5 and x6) or () );
+    y0 <= ((x0 and x1) or (wire_0 and x5 and x6) or (x7 and x8 and x9 and wire_1));
 end Behavioral;

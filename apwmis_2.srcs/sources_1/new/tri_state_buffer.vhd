@@ -7,14 +7,6 @@ entity tri_state_buffer is
 end tri_state_buffer;
 
 architecture Behavioral of tri_state_buffer is
-
 begin
-    process(c)
-    begin
-        if rising_edge(c) then
-            y<= x;
-        else
-            y <= 'Z';
-        end if;
-    end process;
+    y <= x when (c='1') else 'Z';
 end Behavioral;

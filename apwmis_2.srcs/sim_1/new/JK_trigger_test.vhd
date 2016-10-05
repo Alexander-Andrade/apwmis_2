@@ -15,7 +15,8 @@ architecture Behavioral of JK_trigger_test is
               q, not_q : out std_logic);
     end component;
     
-    signal j,k,clk, not_s, not_r : std_logic := '0';
+    signal j,k,clk : std_logic := '0';
+    signal not_s, not_r : std_logic := '1';
     signal q, not_q : std_logic := '0';
     constant clk_period : time := 5 ns;
 begin
@@ -33,20 +34,27 @@ begin
     begin
         j<='0';
         k<='0';        
-        wait for clk_period*2;
+        wait for 10 ns;
         j<='0';
         k<='1';        
-        wait for clk_period*2;
+        wait for 10 ns;
         j<='1';
         k<='0';        
-        wait for clk_period*2;
+        wait for 10 ns;
         j<='1';
         k<='1';        
-        wait for clk_period*2;
-        not_r<='0';       
-        wait for clk_period*2;
-        not_s<='0';        
-        wait for clk_period*2;
+        wait for 10 ns;
+        not_r<='0';
+        not_s<='1';       
+        wait for 10 ns;
+        not_s<='0'; 
+        not_r<='1';     
+        wait for 10 ns;
+        not_s<='0';
+        not_r<='0';
+        wait for 10 ns;
+        not_s<='1';
+        not_r<='1';
     end process;
     
 end Behavioral;

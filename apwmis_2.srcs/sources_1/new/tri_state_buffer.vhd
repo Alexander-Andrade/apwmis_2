@@ -8,5 +8,5 @@ end tri_state_buffer;
 
 architecture Behavioral of tri_state_buffer is
 begin
-    y <= x when (c='1') else 'Z';
+    y <= (not x) when (c='1') else 'Z';
 end Behavioral;

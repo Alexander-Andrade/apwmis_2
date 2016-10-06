@@ -11,9 +11,19 @@ architecture Behavioral of full_scheme_test is
               cco, rco, q_a, q_b, q_c, q_d : out std_logic);
     end component;
     
-    signal not_oe, ent, enp, not_sclr, not_sload, clk, not_aclr, not_aload, a, b, c, d : std_logic := '0';
-    signal cco, rco, q_a, q_b, q_c, q_d : std_logic := '0';
+    signal x : std_logic_vector(11 downto 0) := ('0','0','0','0','0','0','0','0','0','0','0','0');
+    signal y : std_logic_vecotr() := ();
+    
+    constant clk_period : time := 5 ns;
 begin
+   process
+   begin
+       clk <= '0';
+       wait for clk_period;
+       clk <= '1';
+       wait for clk_period;
+   end process;
 
+    
 
 end Behavioral;

@@ -12,7 +12,7 @@ architecture Behavioral of scheme_2 is
     signal wire_0 : std_logic := '0';
     signal wire_1 : std_logic := '1';
 begin
-    wire_0 <= x2 and x3;
+    wire_0 <= not (x2 and x3);
     wire_1 <= not (x8 and x9);
     y0 <= ((x0 and x1) or (wire_0 and x4 and x5) or (wire_1 and x6 and x7));
 end Behavioral;

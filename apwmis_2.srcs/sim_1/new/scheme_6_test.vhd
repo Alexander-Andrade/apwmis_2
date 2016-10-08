@@ -18,11 +18,15 @@ architecture Behavioral of scheme_6_test is
 begin
     uut : scheme_6 port map(x0 => x(0), x1 => x(1), x2 => x(2), x3 => x(3), y0 => y(0), y1 => y(1), y2 => y(2));
 
-    process
-    begin
-        for i in 0 to 15 loop
-            x <= std_logic_vector(to_unsigned(i, x'length));
-            wait for 10 ns;
-        end loop;
-    end process;
+--    process
+--    begin
+--        for i in 0 to 15 loop
+--            x <= std_logic_vector(to_unsigned(i, x'length));
+--            wait for 10 ns;
+--        end loop;
+--    end process;
+    x(0)<='1';
+    x(1)<='1';
+    x(2)<='1';
+    x(3)<='1';
 end Behavioral;

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity full_scheme is
     Port (not_oe, ent, enp, not_sclr, not_sload, clk, not_aclr, not_aload, a, b, c, d : in std_logic;
-          cco, rco, q_a, q_b, q_c, q_d : out std_logic);
+          cco, rco, q_a, q_b, q_c, q_d : out std_logic; y_iw : out std_logic_vector(27 downto 0));
 end full_scheme;
 
 architecture Behavioral of full_scheme is
@@ -52,10 +52,17 @@ architecture Behavioral of full_scheme is
               q, not_q : out std_logic);
     end component;
     
-    signal iw : std_logic_vector(27 downto 0) := ('0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0');
+    signal high : std_logic := '1';
+    signal iw : std_logic_vector(27 downto 0) := (others=> '0');
+    signal j_inv : std_logic_vector(4 downto 1) := (others=>'0');
 begin
+    y_iw<= iw;
     iw(0) <= not not_oe;
-    scheme_6_1 : scheme_6 port map(x0=>ent,x1=>enp,x2=>not_sclr,x3=>not_sload,y0=>iw(1),y1=>iw(2),y2=>iw(3));
+    --scheme_6_1 : scheme_6 port map(x0=>ent,x1=>enp,x2=>not_sclr,x3=>not_sload,y0=>iw(1),y1=>iw(2),y2=>iw(3));
+    iw(1)<='0';
+    iw(2)<='1';
+    iw(3)<='0';
+    
     iw(4) <= not clk;
     iw(5) <= not not_aclr;
     iw(6) <= not not_aload;
@@ -71,10 +78,14 @@ begin
     scheme_5_3 : scheme_5 port map(x0=>iw(5),x1=>iw(6),x2=>c,x3=>iw(6),x4=>not_aclr,y0=>iw(24),y1=>iw(25));
     scheme_5_4 : scheme_5 port map(x0=>iw(5),x1=>iw(6),x2=>d,x3=>iw(6),x4=>not_aclr,y0=>iw(26),y1=>iw(27));
     
-    jk_trigger_1 : jk_trigger port map(j=>iw(20),k=>iw(21),clk=>iw(4),nor_s='1',not_r=>'1',q=>iw(12),not_q=>iw(13));
-    jk_trigger_2 : jk_trigger port map(j=>iw(22),k=>iw(23),clk=>iw(4),nor_s='1',not_r=>'1',q=>iw(14),not_q=>iw(15));
-    jk_trigger_3 : jk_trigger port map(j=>iw(24),k=>iw(25),clk=>iw(4),nor_s='1',not_r=>'1',q=>iw(16),not_q=>iw(17));
-    jk_trigger_4 : jk_trigger port map(j=>iw(26),k=>iw(27),clk=>iw(4),nor_s='1',not_r=>'1',q=>iw(18),not_q=>iw(19));
+    j_inv(1) <= not iw(7);
+    jk_trigger_1 : JK_trigger port map(j=>iw(7),k=>j_inv(1),clk=>iw(4),not_s=>iw(21),not_r=>iw(20),q=>iw(12),not_q=>iw(13));
+    j_inv(2) <= not iw(8);
+    jk_trigger_2 : JK_trigger port map(j=>iw(8),k=>j_inv(2),clk=>iw(4),not_s=>iw(23),not_r=>iw(22),q=>iw(14),not_q=>iw(15));
+    j_inv(3) <= not iw(9);
+    jk_trigger_3 : JK_trigger port map(j=>iw(9),k=>j_inv(3),clk=>iw(4),not_s=>iw(25),not_r=>iw(24),q=>iw(16),not_q=>iw(17));
+    j_inv(4) <= not iw(10);
+    jk_trigger_4 : JK_trigger port map(j=>iw(10),k=>j_inv(4),clk=>iw(4),not_s=>iw(27),not_r=>iw(26),q=>iw(18),not_q=>iw(19));
     
     tri_state_buffer_1 : tri_state_buffer port map(x=>iw(13),c=>iw(0),y=>q_a);
     tri_state_buffer_2 : tri_state_buffer port map(x=>iw(15),c=>iw(0),y=>q_b);

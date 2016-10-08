@@ -29,32 +29,36 @@ begin
         clk <= '1';
         wait for clk_period;
     end process;
+    j<='1';
+    k<='0';
+    not_r<='1';
+    not_s<='1';
     
-    process
-    begin
-        j<='0';
-        k<='0';        
-        wait for 10 ns;
-        j<='0';
-        k<='1';        
-        wait for 10 ns;
-        j<='1';
-        k<='0';        
-        wait for 10 ns;
-        j<='1';
-        k<='1';        
-        wait for 10 ns;
-        not_r<='0';
-        not_s<='1';       
-        wait for 10 ns;
-        not_s<='0'; 
-        not_r<='1';     
-        wait for 10 ns;
-        not_s<='0';
-        not_r<='0';
-        wait for 10 ns;
-        not_s<='1';
-        not_r<='1';
-    end process;
+--    process
+--    begin
+--        j<='0';
+--        k<='0';        
+--        wait for 10 ns;
+--        j<='0';
+--        k<='1';        
+--        wait for 10 ns;
+--        j<='1';
+--        k<='0';        
+--        wait for 10 ns;
+--        j<='1';
+--        k<='1';        
+--        wait for 10 ns;
+--        not_r<='0';
+--        not_s<='1';       
+--        wait for 10 ns;
+--        not_s<='0'; 
+--        not_r<='1';     
+--        wait for 10 ns;
+--        not_s<='0';
+--        not_r<='0';
+--        wait for 10 ns;
+--        not_s<='1';
+--        not_r<='1';
+--    end process;
     
 end Behavioral;

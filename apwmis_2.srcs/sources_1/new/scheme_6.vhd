@@ -11,10 +11,10 @@ architecture Behavioral of scheme_6 is
     signal wire_0 : std_logic := '0';
     signal wire_1 : std_logic := '0';
 begin
-    wire_0 <= (not (x0 and x1 and x3)); 
+    wire_0 <= ((x0 and x1 and x3)); 
     wire_1 <= x2;
     
-    y0 <= (not wire_0) and (not wire_1);
-    y1 <= x3 and (not wire_1);
+    y0 <= (wire_0) and (wire_1);
+    y1 <= x3 and (wire_1);
     y2 <= (not x3) and (not wire_1);
 end Behavioral;

@@ -27,13 +27,33 @@ begin
        clk <= '1';
        wait for clk_period;
    end process;
-  
-   not_oe<='0';
-   ent<='1';
-   enp<='1';
-   not_sclr<='1';
-   not_sload<='1';
-   not_aclr<='1';
-   not_aload<='1';
+   
+   process
+   begin
+   --counting
+       not_oe<='0';
+       ent<='1';
+       enp<='1';
+       not_sclr<='1';
+       not_sload<='1';
+       not_aclr<='1';
+       not_aload<='1';
+       wait for 100 ns;
+   --async clear
+       not_oe<='0';
+       not_aclr<='0';
+       wait for 100 ns;
+   --async load
+       a<='0';
+       b<='1';
+       c<='0';
+       d<='1'; 
+   
+       not_aclr<='1';
+       not_aload<='0';
+       wait for 100 ns; 
+   --sync clear
+       
+   end process;
          
 end Behavioral;

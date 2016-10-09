@@ -58,10 +58,10 @@ architecture Behavioral of full_scheme is
 begin
     iw_y <= iw;
     iw(0) <= not not_oe;
-    --scheme_6_1 : scheme_6 port map(x0=>ent,x1=>enp,x2=>not_sclr,x3=>not_sload,y0=>iw(1),y1=>iw(2),y2=>iw(3));
-    iw(1)<='1';
-    iw(2)<='1';
-    iw(3)<='0';
+    scheme_6_1 : scheme_6 port map(x0=>ent,x1=>enp,x2=>not_sclr,x3=>not_sload,y0=>iw(1),y1=>iw(2),y2=>iw(3));
+    --iw(1)<='1';
+    --iw(2)<='1';
+    --iw(3)<='0';
     
     iw(4) <= not clk;
     iw(5) <= not not_aclr;

@@ -30,7 +30,7 @@ begin
         wait for clk_period;
     end process;
     j<='1';
-    k<='0';
+    k<= not j;
     not_r<='1';
     not_s<='1';
     

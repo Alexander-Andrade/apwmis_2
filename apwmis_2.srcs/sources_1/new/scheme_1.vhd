@@ -9,6 +9,6 @@ end scheme_1;
 architecture Behavioral of scheme_1 is
     signal wire_0 : std_logic := '0';
 begin
-    wire_0 <= not(x6 and (not x7));
+    wire_0 <= not(x6 and x7);
     y0 <= ( (x0 and x1) or (x2 and x3 and (not x4)) or (x5 and wire_0));
 end Behavioral;

@@ -44,7 +44,7 @@ begin
             q_temp <= '1';
         elsif not_s='1' and not_r='0' then
             q_temp <= '0';
-        elsif rising_edge(clk) and not_s='1' and not_r='1' then 
+        elsif clk'event and clk='1' and not_s='1' and not_r='1' then 
             if j='0' and k='1' then
                 q_temp <='0';
             elsif j='1' and k='0' then

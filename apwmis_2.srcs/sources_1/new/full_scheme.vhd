@@ -3,13 +3,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity full_scheme is
     Port (not_oe, ent, enp, not_sclr, not_sload, clk, not_aclr, not_aload, a, b, c, d : in std_logic;
-          cco, rco, q_a, q_b, q_c, q_d : out std_logic; y_iw : out std_logic_vector(27 downto 0));
+          cco, rco, q_a, q_b, q_c, q_d : out std_logic; iw_y : out std_logic_vector(27 downto 0));
 end full_scheme;
 
 architecture Behavioral of full_scheme is
     component scheme_1 is
         Port (x0,x1,x2,x3,x4,x5,x6,x7 : in std_logic;
-              y0 :out std_logic);
+              y0 : out std_logic);
     end component;
     
     component scheme_2 is
@@ -56,10 +56,10 @@ architecture Behavioral of full_scheme is
     signal iw : std_logic_vector(27 downto 0) := (others=> '0');
     signal j_inv : std_logic_vector(4 downto 1) := (others=>'0');
 begin
-    y_iw<= iw;
+    iw_y <= iw;
     iw(0) <= not not_oe;
     --scheme_6_1 : scheme_6 port map(x0=>ent,x1=>enp,x2=>not_sclr,x3=>not_sload,y0=>iw(1),y1=>iw(2),y2=>iw(3));
-    iw(1)<='0';
+    iw(1)<='1';
     iw(2)<='1';
     iw(3)<='0';
     
@@ -69,7 +69,7 @@ begin
     
     scheme_1_1 : scheme_1 port map(x0=>a,x1=>iw(3),x2=>iw(2),x3=>iw(12),x4=>iw(1),x5=>iw(1),x6=>iw(2),x7=>iw(12),y0=>iw(7));
     scheme_2_1 : scheme_2 port map(x0=>b,x1=>iw(3),x2=>iw(1),x3=>iw(12),x4=>iw(14),x5=>iw(2),x6=>iw(1),x7=>iw(12),x8=>iw(2),x9=>iw(14),y0=>iw(8));
-    scheme_3_1 : scheme_3 port map(x0=>c,x1=>iw(3),x2=>iw(2),x3=>iw(14),x4=>iw(12),x5=>iw(16),x6=>iw(2),x7=>iw(1),x8=>iw(14),x9=>iw(12),x10=>iw(2),x11=>iw(16),y0=>iw(9));
+    scheme_3_1 : scheme_3 port map(x0=>c,x1=>iw(3),x2=>iw(1),x3=>iw(14),x4=>iw(12),x5=>iw(16),x6=>iw(2),x7=>iw(1),x8=>iw(14),x9=>iw(12),x10=>iw(2),x11=>iw(16),y0=>iw(9));
     scheme_4_1 : scheme_4 port map(x0=>d,x1=>iw(3),x2=>iw(1),x3=>iw(16),x4=>iw(14),x5=>iw(12),x6=>iw(18),x7=>iw(2),x8=>iw(1),x9=>iw(16),x10=>iw(14),x11=>iw(12),x12=>iw(2),x13=>iw(18),y0=>iw(10));
     
     scheme_7_1 : scheme_7 port map(x0=>ent,x1=>enp,x2=>iw(4),x3=>iw(18),x4=>iw(16),x5=>iw(14),x6=>iw(12),y0=>cco,y1=>rco);

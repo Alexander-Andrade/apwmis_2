@@ -38,7 +38,7 @@ begin
        not_sload<='1';
        not_aclr<='1';
        not_aload<='1';
-       wait for 95 ns;
+       wait for 93 ns;
    --async clear
        not_oe<='0';
        not_aclr<='0';
@@ -59,7 +59,7 @@ begin
        not_aload<='1';
        not_sclr<='0';
        wait for 100 ns;
-    --sync load
+   -- sync load
        a<='1';
        b<='1';
        c<='0';

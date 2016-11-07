@@ -16,5 +16,5 @@ begin
     
     y0 <= (wire_0) and (wire_1);
     y1 <= x3 and (wire_1);
-    y2 <= (not x3) and (not wire_1);
+    y2 <= (not x3) and (wire_1);
 end Behavioral;

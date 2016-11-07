@@ -79,13 +79,14 @@ begin
     scheme_5_4 : scheme_5 port map(x0=>iw(5),x1=>iw(6),x2=>d,x3=>iw(6),x4=>not_aclr,y0=>iw(26),y1=>iw(27));
     
     j_inv(1) <= not iw(7);
-    jk_trigger_1 : JK_trigger port map(j=>iw(7),k=>j_inv(1),clk=>iw(4),not_s=>iw(21),not_r=>iw(20),q=>iw(12),not_q=>iw(13));
+    
+    jk_trigger_1 : JK_trigger port map(j=>iw(7),k=>j_inv(1),clk=>clk,not_s=>iw(21),not_r=>iw(20),q=>iw(12),not_q=>iw(13));
     j_inv(2) <= not iw(8);
-    jk_trigger_2 : JK_trigger port map(j=>iw(8),k=>j_inv(2),clk=>iw(4),not_s=>iw(23),not_r=>iw(22),q=>iw(14),not_q=>iw(15));
+    jk_trigger_2 : JK_trigger port map(j=>iw(8),k=>j_inv(2),clk=>clk,not_s=>iw(23),not_r=>iw(22),q=>iw(14),not_q=>iw(15));
     j_inv(3) <= not iw(9);
-    jk_trigger_3 : JK_trigger port map(j=>iw(9),k=>j_inv(3),clk=>iw(4),not_s=>iw(25),not_r=>iw(24),q=>iw(16),not_q=>iw(17));
+    jk_trigger_3 : JK_trigger port map(j=>iw(9),k=>j_inv(3),clk=>clk,not_s=>iw(25),not_r=>iw(24),q=>iw(16),not_q=>iw(17));
     j_inv(4) <= not iw(10);
-    jk_trigger_4 : JK_trigger port map(j=>iw(10),k=>j_inv(4),clk=>iw(4),not_s=>iw(27),not_r=>iw(26),q=>iw(18),not_q=>iw(19));
+    jk_trigger_4 : JK_trigger port map(j=>iw(10),k=>j_inv(4),clk=>clk,not_s=>iw(27),not_r=>iw(26),q=>iw(18),not_q=>iw(19));
     
     tri_state_buffer_1 : tri_state_buffer port map(x=>iw(13),c=>iw(0),y=>q_a);
     tri_state_buffer_2 : tri_state_buffer port map(x=>iw(15),c=>iw(0),y=>q_b);

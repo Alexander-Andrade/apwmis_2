@@ -1,3 +1,5 @@
 /apwmis_2.xpr
 apwmis_2.cache/
-apwmis_2.sim
+apwmis_2.sim/
+apwmis_2.hw/
+/vivado*
